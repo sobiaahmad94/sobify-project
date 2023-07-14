@@ -101,8 +101,18 @@ function SkeletonContainer() {
         }
     };
 
-    
     // function to delete the song
+    const deleteSong = async (playlistId, songId) => {
+        try {
+            await api.delete(`/playlists/${playlistId}/songs/${songId}`);
+        // checks if it's working
+        console.log("the song has been deleted", songId);
+        fetchPlaylist(); // this refreshes the playlists whenever a song is deleted
+    } catch (error) {
+        console.error("oh mate, failed to delete song", error);
+    }
+}
+    
 
     // function to remove out of favourites
 
