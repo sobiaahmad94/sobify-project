@@ -38,9 +38,31 @@ function SkeletonContainer() {
         } catch (error) {
             console.error("failed to fetch the favourites", error);
         }
+    };
 
+    // function to handleSearch
+    const handleSearch = async (keywords) => {
+        try {
+            const response = await api.get(`/search?keywords=${keywords}`);
+            setSearchResults(response.data.results);
+        } catch (error) {
+            console.error("failed to properly search the songs", error);
         }
-    }
+    };
+
+    // function to add to playlist
+    const addToPlaylist = async (playlistId, song) => {
+        try {
+            const response = await api.post(`/playlists/${playlistId}/songs`, song);
+            // see if it's working
+            console.log("song added to the playlist, woooooo", response.data);
+        } catch (error) {
+            console.error("oh no, failed to add the song to the playlist", error);
+        }
+    };
+    
+    
+    
 
     return (
         // order: SearchBar, Song, CreatePlaylistList, PlaylistList, FavouritePlaylist (will add the other components in my tree around these later)
