@@ -15,6 +15,10 @@ function SkeletonContainer() {
     // favourites state
     const [favourites, setFavourites] = useState([]);
 
+    // selected playlist
+    const [selectedPlaylist, setSelectedPlaylist] = useState("");
+
+
     useEffect(() => {
         fetchPlaylists();
         fetchFavourites();
