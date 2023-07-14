@@ -60,6 +60,37 @@ function SkeletonContainer() {
             console.error("oh no, failed to add the song to the playlist", error);
         }
     };
+
+    const addToFavourites = async (song) => {
+        try {
+            const response = await api.post("/favourites/songs", song);
+            // checking if it's working
+            console.log("that class song has been added to favourites", response.data);
+        } catch (error) {
+            console.error("failed to add the song to favourites", error);
+        }
+    };
+    
+    // function to create playlist
+    const createPlaylist = async = (name) => {
+        try {
+            const response = await api.post("/playlists", {name});
+            // checking if it's working
+            console.log("the playlist has been created, woooo", response.data);
+            fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
+        } catch (error) {
+            console.error("oh no, failed to create the playlist", error);
+        }
+    };
+
+    // function to delete the playlist
+    
+    // function to delete the song
+
+    // function to remove out of favourites
+
+    
+    
     
     
     
