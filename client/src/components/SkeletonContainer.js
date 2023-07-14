@@ -29,6 +29,7 @@ function SkeletonContainer() {
             console.error("failed to fetch the playlists, oops", error);
         }
     };
+}
 
     // function to fetch favourites 
     const fetchFavourites= async () => {
@@ -40,6 +41,7 @@ function SkeletonContainer() {
         }
     };
 
+
     // function to handleSearch
     const handleSearch = async (keywords) => {
         try {
@@ -49,6 +51,7 @@ function SkeletonContainer() {
             console.error("failed to properly search the songs", error);
         }
     };
+
 
     // function to add to playlist
     const addToPlaylist = async (playlistId, song) => {
@@ -61,6 +64,7 @@ function SkeletonContainer() {
         }
     };
 
+
     const addToFavourites = async (song) => {
         try {
             const response = await api.post("/favourites/songs", song);
@@ -70,26 +74,39 @@ function SkeletonContainer() {
             console.error("failed to add the song to favourites", error);
         }
     };
+
     
     // function to create playlist
-    const createPlaylist = async = (name) => {
+    const createPlaylist = async (name) => {
         try {
-            const response = await api.post("/playlists", {name});
-            // checking if it's working
-            console.log("the playlist has been created, woooo", response.data);
-            fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
+          const response = await api.post('/playlists', { name });
+          // checking if it's working
+          console.log("the playlist has been created, woooo", response.data);
+          fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
         } catch (error) {
-            console.error("oh no, failed to create the playlist", error);
+          console.error("oh no, failed to create the playlist", error);
+        }
+      };
+
+
+    // function to delete the playlist
+    const deletePlaylist = async (playlistId) => {
+        try {
+            await api.delete(`/playlists/${playlistId}`);
+            // checking if it's working
+            console.log("the playlist has been deleted, playlistId");
+            fetchPlaylist(); // this will be called to make it refresh whenever a song is deleted
+        } catch(error) {
+            console.error("oh no, failed to delete the playlist", error);
         }
     };
 
-    // function to delete the playlist
     
     // function to delete the song
 
     // function to remove out of favourites
 
-    
+
     
     
     
@@ -117,6 +134,5 @@ function SkeletonContainer() {
             {/* MusicPlayerContainer will go here which will contain the Spotify SDK */}    
         </div>
     );
-}
 
 export default SkeletonContainer;
