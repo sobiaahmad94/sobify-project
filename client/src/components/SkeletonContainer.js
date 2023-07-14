@@ -113,14 +113,17 @@ function SkeletonContainer() {
     }
 }
     
-
     // function to remove out of favourites
-
-
-    
-    
-    
-    
+    const removeFromFavourites = async (songId) => {
+        try {
+            await api.delete(`/favourites/songs/${songId}`);
+            // checking if it's working
+            console.log("the song has been removed from favourites", songId);
+            fetchFavourites(); // this will refresh the playlists whenever a song is deleted
+        } catch (error) {
+            console.error("oh no, failed to remove song from favourites", error);
+        }
+    };
 
     return (
         // order: SearchBar, Song, CreatePlaylistList, PlaylistList, FavouritePlaylist (will add the other components in my tree around these later)
