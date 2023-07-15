@@ -13,7 +13,7 @@ function Song({song, playlists, addToPlaylist, addToFavourites, selectedPlaylist
     // handle adding to playlist
     const handleAddToPlaylist = () => {
         if (selectedPlaylist && selectedPlaylist !== "") { // checks if the playlist isn't an empty string, means you can't add a song if there's nothing there like no playlists to select
-            const playlist = playlists.find((p) => p._id === selectedPlaylist); // searches through playlists array to check if the one chosen is the same as one from the playlists array
+            const playlist = playlists.find((p) => p.name === selectedPlaylist); // searches through playlists array to check if the one chosen is the same as one from the playlists array
             // find() checks to get the first thing in the array that matches
             if (playlist) {
                 addToPlaylist(playlist._id, { // gives track name and artist name too
@@ -47,11 +47,11 @@ function Song({song, playlists, addToPlaylist, addToFavourites, selectedPlaylist
         <select value={selectedPlaylist} onChange={handlePlaylistChange}>
         <option value="">Please select a playlist</option>
         {playlists.map((playlist) => (
-            <option key={playlist._id} value={playlist._id}>
+          <option key={playlist._id} value={playlist.name}>
             {playlist.name}
-    </option>
-  ))}
-</select>
+          </option>
+        ))}
+      </select>
 
         <button onClick={handleAddToPlaylist}>Add To Playlist</button>
         <button onClick={handleAddToFavourites}>Favourite This Song</button>

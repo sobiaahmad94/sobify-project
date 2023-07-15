@@ -1,6 +1,9 @@
 import React from "react";
 
 function FavouritePlaylist({favourites, removeFromFavourites}) {
+  if (!Array.isArray(favourites)) {
+    return <p>Sorry, no favourites found</p>
+  }
     return (
         //  remove button
         <div>
