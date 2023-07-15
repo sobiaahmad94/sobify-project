@@ -29,8 +29,11 @@ mongoose.connect(mongodbLink, {
 
 // importing and using the views (routes as I've called then that) which'll be in reference to my other routes folder
 // routes 
-
+const playlistRoutes = require("./routes/playlistRoutes");
+const favouriteRoutes = require("./routes/favouriteRoutes");
 
 // do app.use for them after
+app.use("/api/playlists", playlistRoutes);
+app.use("")
 
 
