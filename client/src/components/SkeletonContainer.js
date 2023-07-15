@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react";
 
+
+import NavBar from "./NavBar";
 import SearchBar from './SearchBar';
+import SearchResults from "./SearchResult";
 import Song from './Song';
 import CreatePlaylist from './CreatePlaylist';
 import PlaylistList from './PlaylistList';
@@ -134,12 +137,11 @@ function SkeletonContainer() {
         // order: SearchBar, Song, CreatePlaylistList, PlaylistList, FavouritePlaylist (will add the other components in my tree around these later)
         <div>
         {/* <NavBarContainer /> which will contain SearchBar and NavBar */}
+            <NavBar />
+
             <SearchBar onSearch={handleSearch}/>
 
-            <h1>Search Results</h1> {/* maybe this should go in a component */}
-            {searchResults.map((song) => (
-                <Song key={song.trackId} song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/> // might need to sort out addToFavourites={addToFavourites}
-            ))}
+            <SearchResults searchResults={searchResults} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
 
             {/* <SiderBarContainer /> should contain CreatePlaylist, PlaylistList and FavouritePlaylist */}
 
