@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router(); // express.Router() creates an instance of the Router class, used to make routes
 const favouriteController = require("../controllers/favouriteController");
 
 // I'll use functions from the favouriteController

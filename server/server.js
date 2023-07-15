@@ -31,9 +31,12 @@ mongoose.connect(mongodbLink, {
 // routes 
 const playlistRoutes = require("./routes/playlistRoutes");
 const favouriteRoutes = require("./routes/favouriteRoutes");
+const searchRoutes = require("./routes/searchRoutes");
 
 // do app.use for them after
 app.use("/api/playlists", playlistRoutes);
-app.use("")
+app.use("/api/favourites", favouriteRoutes);
+app.use("api/search", searchRoutes);
+
 
 
