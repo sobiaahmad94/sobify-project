@@ -36,7 +36,7 @@ function SkeletonContainer() {
 
 
     // function to fetch favourites 
-    const fetchFavourites= async () => {
+    const fetchFavourites = async () => {
         try {
             const response = await api.get("/favourites");
             setFavourites(response.data);
@@ -49,7 +49,7 @@ function SkeletonContainer() {
     // function to handleSearch
     const handleSearch = async (keywords) => {
         try {
-            const response = await api.get(`/search?keywords=${keywords}`);
+            const response = await api.get(`https://itunes.apple.com/search?term=${keywords}`);
             setSearchResults(response.data.results);
         } catch (error) {
             console.error("failed to properly search the songs", error);
@@ -98,8 +98,8 @@ function SkeletonContainer() {
         try {
             await api.delete(`/playlists/${playlistId}`);
             // checking if it's working
-            console.log("the playlist has been deleted, playlistId");
-            fetchPlaylist(); // this will be called to make it refresh whenever a song is deleted
+            console.log("the playlist has been deleted", playlistId);
+            fetchPlaylists(); // this will be called to make it refresh whenever a song is deleted
         } catch(error) {
             console.error("oh no, failed to delete the playlist", error);
         }
@@ -111,7 +111,7 @@ function SkeletonContainer() {
             await api.delete(`/playlists/${playlistId}/songs/${songId}`);
         // checks if it's working
         console.log("the song has been deleted", songId);
-        fetchPlaylist(); // this refreshes the playlists whenever a song is deleted
+        fetchPlaylists(); // this refreshes the playlists whenever a song is deleted
     } catch (error) {
         console.error("oh mate, failed to delete song", error);
     }
@@ -138,7 +138,7 @@ function SkeletonContainer() {
 
             <h1>Search Results</h1> {/* maybe this should go in a component */}
             {searchResults.map((song) => (
-                <Song key={song.trackId} song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites} handleAddToFavourites={handleAddToFavourites}/>
+                <Song key={song.trackId} song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/> // might need to sort out addToFavourites={addToFavourites}
             ))}
 
             {/* <SiderBarContainer /> should contain CreatePlaylist, PlaylistList and FavouritePlaylist */}
