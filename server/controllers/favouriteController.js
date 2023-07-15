@@ -3,16 +3,16 @@ const Playlist = require("../models/playlistModel");
 // getting the favourites playlist
 const getFavouritesPlaylist = async (req, res) => {
     try {
-        const playlist = await Playlist.findOne({name: "favourites playlist"});
+        const playlist = await Playlist.findOne({name: "Favourites Playlist"});
 
         if (!playlist) {
-            return res.status(404).json({error: "favourites playlist not found"});
+            return res.status(404).json({error: "Favourites Playlist not found"});
         }
 
         res.json(playlist);
     } catch (error) {
         console.error(error);
-        res.status(500).json({error: "failed to get favourites playlist"});
+        res.status(500).json({error: "failed to get Favourites Playlist"});
     }
 };
 
@@ -42,7 +42,7 @@ const addSongToFavourites = async (req, res) => {
         res.json(newSong);
     } catch (error) {
         console.error(error);
-        res.status(500).json({error: "failed to add song to favourites playlist"});
+        res.status(500).json({error: "failed to add song to Favourites Playlist"});
     }
 };
     
@@ -54,13 +54,13 @@ const getFavouriteSongs = async (req, res) => {
         });
 
         if (!favouritesPlaylist) {
-            return res.status(404).json({error: "favourites playlist not found"});
+            return res.status(404).json({error: "Favourites Playlist not found"});
         }
 
         res.json(favouritesPlaylist.songs);
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: "failed to get favourites"})
+        res.status(500).json({error: "failed to get Favourites Playlist"})
     }
 };
 
@@ -74,7 +74,7 @@ const removeSongFromFavourites = async (req, res) => {
         });
 
         if (!favouritesPlaylist) {
-            return res.status(404).json({error: "favourites playlist not found"});
+            return res.status(404).json({error: "Favourites Playlist not found"});
         }
 
         favouritesPlaylist.songs = favouritesPlaylist.songs.filter(
