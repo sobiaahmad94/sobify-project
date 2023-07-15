@@ -27,8 +27,9 @@ mongoose.connect(mongodbLink, {
     console.error("oh no, failed to connect to mongodb", error);
 });
 
-// importing and using routes which'll be in reference to my other folder
-// routes
+// importing and using the views (routes as I've called then that) which'll be in reference to my other routes folder
+// routes 
+
 
 // do app.use for them after
 
