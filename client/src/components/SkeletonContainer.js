@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import React, {useState, useEffect} from "react";
 
 import SearchBar from './SearchBar';
 import Song from './Song';
@@ -33,7 +33,7 @@ function SkeletonContainer() {
             console.error("failed to fetch the playlists, oops", error);
         }
     };
-}
+
 
     // function to fetch favourites 
     const fetchFavourites= async () => {
@@ -83,7 +83,7 @@ function SkeletonContainer() {
     // function to create playlist
     const createPlaylist = async (name) => {
         try {
-          const response = await api.post('/playlists', { name });
+          const response = await api.post("/playlists", {name});
           // checking if it's working
           console.log("the playlist has been created, woooo", response.data);
           fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
@@ -115,7 +115,7 @@ function SkeletonContainer() {
     } catch (error) {
         console.error("oh mate, failed to delete song", error);
     }
-}
+};
     
     // function to remove out of favourites
     const removeFromFavourites = async (songId) => {
@@ -128,6 +128,7 @@ function SkeletonContainer() {
             console.error("oh no, failed to remove song from favourites", error);
         }
     };
+    
 
     return (
         // order: SearchBar, Song, CreatePlaylistList, PlaylistList, FavouritePlaylist (will add the other components in my tree around these later)
@@ -137,7 +138,7 @@ function SkeletonContainer() {
 
             <h1>Search Results</h1> {/* maybe this should go in a component */}
             {searchResults.map((song) => (
-                <Song key={song.trackId} song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites} />
+                <Song key={song.trackId} song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites} handleAddToFavourites={handleAddToFavourites}/>
             ))}
 
             {/* <SiderBarContainer /> should contain CreatePlaylist, PlaylistList and FavouritePlaylist */}
@@ -151,5 +152,7 @@ function SkeletonContainer() {
             {/* MusicPlayerContainer will go here which will contain the Spotify SDK */}    
         </div>
     );
+};
+
 
 export default SkeletonContainer;

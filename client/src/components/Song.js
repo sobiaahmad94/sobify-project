@@ -1,6 +1,6 @@
-import {React, useState} from "react";
+import React, {useState} from "react";
 
-function Song({song, playlists, addToPlaylist, addToFavourites}) {
+function Song({song, playlists, addToPlaylist, addToFavourites, handleAddToFavourites}) {
 
     // state for setting playlist but might move this to SkeletonContainer but seemed relevant to me here
     const [selectedPlaylist, setSelectedPlaylist] = useState("");
@@ -8,7 +8,7 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
     // handle playlist changingggg function
     const handlePlaylistChange = (event) => {
         setSelectedPlaylist(event.target.value);
-    }
+    };
 
     // handle adding to playlist
     const handleAddToPlaylist = () => {
@@ -30,17 +30,18 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
         artistName: song.artistName, // passes these properties whenever a song's added to favourites
     });
 
-    //
+    // display song name and artist name along with cover image
+    // audio - would be cool to include this somehow
+    // dropdown for playlists
+    // put the add to playlist and favourite this song buttons here with the funcs passed as props
+
     return (
         <div>
-        {/* display song name and artist name along with cover image */}
         <p>{song.trackName}</p>
         <p>{song.artistName}</p>
         <img src={song.artworkUrl100} alt="album cover" controls/>
-        {/* audio - would be cool if this worked */}
         <audio src={song.previewUrl} alt="preview music mini player" controls/>
 
-        {/* dropdown for playlists */}
         <select value={selectedPlaylist} onChange={handlePlaylistChange}>
         <option value="">Please select a playlist</option>
         {playlists.map((playlist) => (
@@ -49,12 +50,11 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
           </option>
         ))}
       </select>
-        {/* put the add to playlist and favourite this song buttons here with the funcs passed as props */}
         <button onClick={handleAddToPlaylist}>Add To Playlist</button>
         <button onClick={handleAddToFavourites}>Favourite This Song</button>
         </div>
-);
-}
+)
+};
 
 
 export default Song;
