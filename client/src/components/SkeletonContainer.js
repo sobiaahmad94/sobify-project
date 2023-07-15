@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 
-import NavBar from "./NavBar";
-import SearchBar from './SearchBar';
+import HeaderSearchNavContainer from "./HeaderSearchNavContainer";
 import SearchResults from "./SearchResult";
 import Song from './Song';
 import CreatePlaylist from './CreatePlaylist';
@@ -36,7 +35,6 @@ function SkeletonContainer() {
             console.error("failed to fetch the playlists, oops", error);
         }
     };
-
 
     // function to fetch favourites 
     const fetchFavourites = async () => {
@@ -137,9 +135,10 @@ function SkeletonContainer() {
         // order: SearchBar, Song, CreatePlaylistList, PlaylistList, FavouritePlaylist (will add the other components in my tree around these later)
         <div>
         {/* <NavBarContainer /> or HeaderNavContainer which will contain SearchBar and NavBar */}
-            <NavBar />
+            {/* <NavBar />
+            <SearchBar onSearch={handleSearch}/> */}
 
-            <SearchBar onSearch={handleSearch}/>
+            <HeaderSearchNavContainer onSearch={handleSearch}/>
 
             <SearchResults searchResults={searchResults} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
 
