@@ -55,6 +55,26 @@ const songToPlaylist = async (req,res) => {
 };
 
 // deleting a playlist
+const deleteSongFromPlaylist = async (req,res) => {
+    const {playlistId, songId} = req.params;
+
+    try {
+        const playlist = await Playlist.findById(playlistId);
+
+        if (!playlist) {
+            return res.status(404).json({error: "playlist wasn't found"});
+        }
+
+        playlist.songs = playlist.songs.filter(
+            (song) => song._id.toString() !== songId
+        );
+        await playlist.save();
+
+        res.json({message: "song was deleted from playlist"});
+    } catch (error) {
+        res.status(500).json({error: "failed to delete song from playlist"});
+    }
+};
 
 // deleting a song from playlist
 
