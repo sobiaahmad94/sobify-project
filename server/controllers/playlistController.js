@@ -27,7 +27,7 @@ const createPlaylist = async (req, res) => {
 };
 
 // adding a song to a playlist
-const songToPlaylist = async (req,res) => {
+const addSongToPlaylist = async (req, res) => {
     const {playlistId} = req.params;
     const {trackName, artistName} = req.body;
 
@@ -55,6 +55,23 @@ const songToPlaylist = async (req,res) => {
 };
 
 // deleting a playlist
+const deletePlaylist = async (req, res) => {
+    const {playlistId} = req.params;
+
+    try {
+        const deletedPlaylist = await Playlist.findByIdAndDelete(playlistId);
+
+        if (!deletedPlaylist) {
+            return res.status(404).json({error: "playlist not found"});
+        }
+
+        res.json({message: "playlist deleted"});
+    } catch (error) {
+        res.status(500).json({error: "failed to delete playlist"});
+    }
+};
+
+// deleting a song from playlist
 const deleteSongFromPlaylist = async (req,res) => {
     const {playlistId, songId} = req.params;
 
@@ -76,8 +93,28 @@ const deleteSongFromPlaylist = async (req,res) => {
     }
 };
 
-// deleting a song from playlist
+
 
 // getting all of the songs from a playlist
+const getPlaylistSongs = async (req, res) => {
+    const { playlistId } = req.params;
+
+    try {
+        const playlist = await Playlist.findById(playlistId);
+        
+    if (!playlist) {
+        
+        return res.status(404).json({ error: "playlist not found"});
+    }
     
+    res.json(playlist.songs);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "failed to get playlist songs"});
+    }
+};
+
+module.exports = {
+    getPlaylists, createPlaylist, addSongToPlaylist, deletePlaylist, deleteSongFromPlaylist, getPlaylistSongs,
+}
 
