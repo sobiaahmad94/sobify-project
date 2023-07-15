@@ -3,7 +3,7 @@ const Playlist = require("../models/playlistModel");
 // getting all the playlists
 const getPlaylists = async (req, res) => {
     try {
-        const playlists = await.Playlist.find();
+        const playlists = await Playlist.find();
         res.json(playlists);
     } catch (error) {
         console.error(error);
