@@ -136,7 +136,7 @@ function SkeletonContainer() {
     return (
         // order: SearchBar, Song, CreatePlaylistList, PlaylistList, FavouritePlaylist (will add the other components in my tree around these later)
         <div>
-        {/* <NavBarContainer /> which will contain SearchBar and NavBar */}
+        {/* <NavBarContainer /> or HeaderNavContainer which will contain SearchBar and NavBar */}
             <NavBar />
 
             <SearchBar onSearch={handleSearch}/>
