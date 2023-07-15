@@ -3,10 +3,7 @@ import React, {useState, useEffect} from "react";
 
 import HeaderSearchNavContainer from "./HeaderSearchNavContainer";
 import SearchResults from "./SearchResult";
-import Song from './Song';
-import CreatePlaylist from './CreatePlaylist';
-import PlaylistList from './PlaylistList';
-import FavouritePlaylist from './FavouritePlaylist';
+import SideBarContainer from "./SideBarContainer";
 import api from "../services/api";
 
 function SkeletonContainer() {
@@ -144,11 +141,13 @@ function SkeletonContainer() {
 
             {/* <SiderBarContainer /> should contain CreatePlaylist, PlaylistList and FavouritePlaylist */}
 
-            <CreatePlaylist onCreate={createPlaylist}/>
+            {/* <CreatePlaylist onCreate={createPlaylist}/>
 
             <PlaylistList playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong}/>
 
-            <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites}/>
+            <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites}/> */}
+
+            <SideBarContainer playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong} favourites={favourites} removeFromFavourites={removeFromFavourites} createPlaylist={createPlaylist}/>
 
             {/* MusicPlayerContainer will go here which will contain the Spotify SDK */}    
         </div>
