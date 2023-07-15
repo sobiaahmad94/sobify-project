@@ -1,14 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 
-function Song({song, playlists, addToPlaylist, addToFavourites, handleAddToFavourites}) {
+function Song({song, playlists, addToPlaylist, addToFavourites, selectedPlaylist, setSelectedPlaylist}) {
 
     // state for setting playlist but might move this to SkeletonContainer but seemed relevant to me here
-    const [selectedPlaylist, setSelectedPlaylist] = useState("");
 
     // handle playlist changingggg function
     const handlePlaylistChange = (event) => {
         setSelectedPlaylist(event.target.value);
     };
+
 
     // handle adding to playlist
     const handleAddToPlaylist = () => {
@@ -25,10 +25,12 @@ function Song({song, playlists, addToPlaylist, addToFavourites, handleAddToFavou
     };
 
     // handle adding to favourites
+    const handleAddToFavourites = () => {
     addToFavourites({ 
         trackName: song.trackName,
         artistName: song.artistName, // passes these properties whenever a song's added to favourites
     });
+    };
 
     // display song name and artist name along with cover image
     // audio - would be cool to include this somehow

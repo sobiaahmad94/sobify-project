@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 
 import HeaderSearchNavContainer from "./HeaderSearchNavContainer";
-import SearchResults from "./SearchResult";
+import SearchResults from "./SearchResults";
 import SideBarContainer from "./SideBarContainer";
 import api from "../services/api";
 
@@ -43,8 +43,7 @@ function SkeletonContainer() {
         }
     };
 
-
-    // function to handleSearch
+// handling search func
     const handleSearch = async (keywords) => {
         try {
             const response = await api.get(`https://itunes.apple.com/search?term=${keywords}`);
@@ -53,6 +52,14 @@ function SkeletonContainer() {
             console.error("failed to properly search the songs", error);
         }
     };
+    // const handleSearch = async (keywords) => {
+    //     try {
+    //         const response = await api.get("/search", {params: {keywords}});
+    //         setSearchResults(response.data.results);
+    //     } catch (error) {
+    //         console.error("failed to properly fetch the songs", error)
+    //     }
+    // };
 
 
     // function to add to playlist
@@ -79,16 +86,28 @@ function SkeletonContainer() {
 
     
     // function to create playlist
-    const createPlaylist = async (name) => {
-        try {
-          const response = await api.post("/playlists", {name});
-          // checking if it's working
-          console.log("the playlist has been created, woooo", response.data);
-          fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
-        } catch (error) {
-          console.error("oh no, failed to create the playlist", error);
-        }
-      };
+    // const createPlaylist = async (name) => {
+    //     try {
+    //       const response = await api.post("/playlists", {name});
+    //       // checking if it's working
+    //       console.log("the playlist has been created, woooo", response.data);
+    //       fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
+    //     } catch (error) {
+    //       console.error("oh no, failed to create the playlist", error);
+    //     }
+    //   };
+    // function to create playlist
+const createPlaylist = async (name) => {
+    try {
+      const response = await api.post("/playlists", { name });
+      // checking if it's working
+      console.log("the playlist has been created, woooo", response.data);
+      fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
+    } catch (error) {
+      console.error("oh no, failed to create the playlist", error);
+    }
+  };
+  
 
 
     // function to delete the playlist

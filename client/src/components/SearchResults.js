@@ -5,9 +5,9 @@ function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourite
   return (
     <div>
       <h1>Search Results</h1>
-      {searchResults.map((song) => (
+      {searchResults.map((song, index) => (
         <Song
-          key={song.trackId}
+          key={`${song.trackId}-${index}`} // assigning a unique key to each Song 
           song={song}
           playlists={playlists}
           addToPlaylist={addToPlaylist}

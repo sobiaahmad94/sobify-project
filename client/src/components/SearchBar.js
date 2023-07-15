@@ -11,8 +11,12 @@ function SearchBar({ onSearch}) {
 
 
     // handling search result
+    // const handleSearch = (event) => {
+    //     event.preventDefault() // added this line because as soon as I typed a character it was registering each character 
+    //     onSearch(keywords);
+    // };
     const handleSearch = (event) => {
-        event.preventDefault() // added this line because as soon as I typed a character it was registering each character 
+        event.preventDefault();
         onSearch(keywords);
     };
 

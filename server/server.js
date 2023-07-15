@@ -5,18 +5,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-app.use(express.json);
+app.use(express.json());
 
 // sobify-music is the database 
-const mongodbLink = "mongodb://localhost:27017/sobify-music";
+const mongodbUri = "mongodb://localhost:27017/sobify-music";
 
 // connecting to mongoose:)
-mongoose.connect(mongodbLink, {
+mongoose.connect(mongodbUri, {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
 })
 .then(() => {
-    const backEndPort = 9000;
+    const backEndPort = 8000;
 
     app.listen(backEndPort, () => {
         console.log(`the server is running on port number ${backEndPort}`);
@@ -34,9 +34,10 @@ const favouriteRoutes = require("./routes/favouriteRoutes");
 const searchRoutes = require("./routes/searchRoutes");
 
 // do app.use for them after
+
 app.use("/api/playlists", playlistRoutes);
 app.use("/api/favourites", favouriteRoutes);
-app.use("api/search", searchRoutes);
+app.use("/api/search", searchRoutes);
 
 
 

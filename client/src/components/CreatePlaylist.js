@@ -1,4 +1,5 @@
-import {React, useState} from "react";
+import React, {useState} from "react";
+import api from "../services/api";
 
 function CreatePlaylist({onCreate}) {
     // playlist name state
@@ -10,11 +11,16 @@ function CreatePlaylist({onCreate}) {
     };
 
     // function that handles playlist being created
-    const handleCreate = () => {
-        if (name && name.trim() !== "") {
-            onCreate(name);
+    const handleCreate = async () => {
+        try {
+          if (name && name.trim() !== "") {
+            const response = await api.post("/playlists", { name }); // sending the name in the request body thing
+            onCreate(response.data);
             setName("");
-        }
+          }
+        } catch (error) {
+          console.error("Failed to create playlist:", error);
+      }
     };
 
     return (
