@@ -11,7 +11,7 @@ app.use(express.json);
 const mongodbLink = "mongodb://localhost:27017/sobify-music";
 
 // connecting to mongoose:)
-mongoose.connect(mongdbLink, {
+mongoose.connect(mongodbLink, {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
 })
