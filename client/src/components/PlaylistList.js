@@ -1,6 +1,6 @@
 import React from "react";
 
-function PlaylistList({ playlists, deletePlaylist, deleteSong }) {
+function PlaylistList({ playlists, deletePlaylist, deleteSong}) {
     return (
       <div>
       <h2>Playlists</h2>

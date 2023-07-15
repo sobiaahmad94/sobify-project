@@ -156,7 +156,7 @@ const createPlaylist = async (name) => {
 
             <HeaderSearchNavContainer onSearch={handleSearch}/>
 
-            <SearchResults searchResults={searchResults} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
+            <SearchResults searchResults={searchResults} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites} setSelectedPlaylist={setSelectedPlaylist}/>
 
             {/* <SiderBarContainer /> should contain CreatePlaylist, PlaylistList and FavouritePlaylist */}
 

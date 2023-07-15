@@ -47,11 +47,12 @@ function Song({song, playlists, addToPlaylist, addToFavourites, selectedPlaylist
         <select value={selectedPlaylist} onChange={handlePlaylistChange}>
         <option value="">Please select a playlist</option>
         {playlists.map((playlist) => (
-          <option key={playlist._id} value={playlist._id}>
+            <option key={playlist._id} value={playlist._id}>
             {playlist.name}
-          </option>
-        ))}
-      </select>
+    </option>
+  ))}
+</select>
+
         <button onClick={handleAddToPlaylist}>Add To Playlist</button>
         <button onClick={handleAddToFavourites}>Favourite This Song</button>
         </div>

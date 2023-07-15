@@ -1,7 +1,7 @@
 import React from "react";
 import Song from "./Song";
 
-function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourites }) {
+function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourites, setSelectedPlaylist }) {
   return (
     <div>
       <h1>Search Results</h1>
@@ -12,6 +12,7 @@ function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourite
           playlists={playlists}
           addToPlaylist={addToPlaylist}
           addToFavourites={addToFavourites}
+          setSelectedPlaylist={setSelectedPlaylist}
         />
       ))}
     </div>
