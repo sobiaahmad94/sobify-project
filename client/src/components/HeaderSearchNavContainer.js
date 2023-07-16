@@ -1,14 +1,18 @@
 import React from "react";
+import {BrowserRouter as Router} from "react-router-dom";
 
 import NavBar from "./NavBar";
 import SearchBar
  from "./SearchBar";
+ 
 
 function HeaderSearchNavContainer({onSearch}) {
     return (
         <div>
-        <NavBar />
-        <SearchBar onSearch={onSearch}/>
+        <Router>
+            <NavBar />
+            <SearchBar onSearch={onSearch}/>
+        </Router>
             
         </div>
     );
