@@ -10,7 +10,7 @@ function HeaderSearchNavContainer({onSearch}) {
         <div>
         <Router>
             <NavBar onSearch={onSearch}/>
-            <SearchBar onSearch={onSearch}/>
+            {/* <SearchBar onSearch={onSearch}/> I moved this inside the NavBar component*/}
         </Router>
             
         </div>
