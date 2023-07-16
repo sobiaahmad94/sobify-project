@@ -5,28 +5,35 @@ import {Search as SearchIcon} from "@material-ui/icons";
 // styling
 const useStyles = makeStyles((theme) => ({
     searchInput: {
+      display: "flex",
       marginRight: 10,
       "& .MuiOutlinedInput-root": {
         "& fieldset": {
-          borderColor: "rgba(255, 255, 255)",
+          borderColor: "rgba(20, 20, 20)",
         },
         "& input": {
-          color: "rgba(255, 255, 255)", 
+            color: "rgba(29,185, 84)",
+            "&:focus": {
+              color: "rgba(29, 185, 84)",
+            },
+            "&::placeholder": {
+                color: "rgba(169,169,169)",
+            }
+          },
         },
       },
-    },
     searchButton: {
       "& .MuiIconButton-root": {
-        color: "rgba(255, 255, 255)",
+        color: "rgba(29, 185, 84)",
         "&:hover": {
-            color: "rgba(30, 215, 96)"
+            color: "rgba(29, 185, 84xs)",
         }
       },
     },
     searchIcon: {
         color: "rgba(255, 255, 255)",
         "&:hover": {
-            color: "rgba(30, 125, 96)",
+            color: "rgba(29, 185, 84)",
         }
     }
   }));
@@ -58,12 +65,11 @@ function SearchBar({ onSearch}) {
     return (
         // form needs to go here, input and search button
     <form onSubmit={handleSearch} style={{ display: "flex", alignItems: "center"}}>
-        <TextField variant="outlined" placeholder="Search" value={keywords} onChange={handleInputChange} className={classes.searchInput}
-        inputProps={{style: {color: "rgba(255, 255, 255)"}}}/>
+        <TextField variant="outlined" placeholder="Search" value={keywords} onChange={handleInputChange} className={classes.searchInput}/>
     
         <IconButton type="submit" aria-label="search" className={classes.searchButton}>
 
-        <SearchIcon className={classes.searchIcon}/>
+        <SearchIcon className={classes.searchIcon} style={{fontSize: "40"}}/>
 
         </IconButton>
     </form>

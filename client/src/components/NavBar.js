@@ -16,8 +16,11 @@ import sobifyNavLogoImg from "../images/sobify-logo-black-background.jpeg";
 
 // styled component variables
 const StyledIconButton = styled(IconButton)`
+* {
+    font-size: 35px;
+}
     &:hover{
-        color: rgba(30, 215, 96);
+        color: rgba(29, 185, 84); 
     }
 `;
 
@@ -54,9 +57,9 @@ function NavBar({onSearch}) {
           <PersonAddIcon/>
         </StyledIconButton>
         {/* this is the person icon for account */}
-        <IconButton color="inherit" component={NavLink} exact to="/account" activeClassName="active">
+        <StyledIconButton color="inherit" component={NavLink} exact to="/account" activeClassName="active">
               <AccountCircleIcon />
-        </IconButton>
+        </StyledIconButton>
         </div>
       </Toolbar>
     </AppBar>
