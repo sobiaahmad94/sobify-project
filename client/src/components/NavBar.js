@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
+
 
 function NavBar() {
+    const [click, setClick] = useState(false);
     return (
         <div>
-        <h1>This is the Navbar</h1>
+        
             
         </div>
     );
