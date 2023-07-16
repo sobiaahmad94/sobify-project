@@ -1,4 +1,5 @@
 import SkeletonContainer from "./components/SkeletonContainer";
+import "./App.css";
 
 function App() {
   return (

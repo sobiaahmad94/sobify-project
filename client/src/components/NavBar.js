@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 const theme = createMuiTheme({
     palette: {
       primary: {
-        main: "rgb(0, 0, 0);", 
+        main: "rgba(0, 0, 0)", 
       },
     },
     typography: {
@@ -18,7 +18,7 @@ const theme = createMuiTheme({
     },
 })
 
-function Navbar({onSearch}) {
+function NavBar({onSearch}) {
   return (
     <ThemeProvider theme={theme}>
     <AppBar position="static">
@@ -41,6 +41,6 @@ function Navbar({onSearch}) {
   );
 }
 
-export default Navbar;
+export default NavBar;
 
 
