@@ -1,12 +1,28 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, ThemeProvider, createMuiTheme, IconButton} from "@material-ui/core";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import sobifyNavLogoImg from "../images/sobify-logo-black-background.jpeg";
-
 import SearchBar from "./SearchBar";
 
+// router
+import {Link, NavLink} from "react-router-dom";
+// styling - material ui
+import {AppBar, Toolbar, Typography, Button, ThemeProvider, createMuiTheme, IconButton} from "@material-ui/core";
+// mui icons
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+// styling - styled components
+import styled from "styled-components";
+// images
+import sobifyNavLogoImg from "../images/sobify-logo-black-background.jpeg";
+
+
+// styled component variables
+const StyledIconButton = styled(IconButton)`
+    &:hover{
+        color: rgba(30, 215, 96);
+    }
+`;
+
+
+// this is the mui theme for the NavBar
 const theme = createMuiTheme({
     palette: {
       primary: {
@@ -16,10 +32,10 @@ const theme = createMuiTheme({
     typography: {
         button : {
             textTransform: "none",
-            
         }
     },
-})
+});
+
 
 function NavBar({onSearch}) {
   return (
@@ -30,16 +46,17 @@ function NavBar({onSearch}) {
             <img src={sobifyNavLogoImg} alt="Sobify nav logo" style={{height: 40, marginRight: 10}}/>
         </Link>
         <SearchBar onSearch={onSearch}/>
-        <div dtylr={{display: "flex", alignItems: "center"}}>
+        <div style={{display: "flex", alignItems: "center"}}>
 
         {/* register for a new account icon */}
-        <IconButton color="inherit" component={NavLink} exact to="/login" activeClassName="active">
+        <StyledIconButton color="inherit" component={NavLink} exact to="/login" activeClassName="active"
+>          
           <PersonAddIcon/>
-        </IconButton>
+        </StyledIconButton>
         {/* this is the person icon for account */}
         <IconButton color="inherit" component={NavLink} exact to="/account" activeClassName="active">
               <AccountCircleIcon />
-            </IconButton>
+        </IconButton>
         </div>
       </Toolbar>
     </AppBar>
@@ -48,5 +65,7 @@ function NavBar({onSearch}) {
 }
 
 export default NavBar;
+
+
 
 
