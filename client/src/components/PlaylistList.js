@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import api from "../services/api";
 
-function PlaylistList({ playlists, deletePlaylist, deleteSong }) {
+function PlaylistList({ playlists, setPlaylists, deletePlaylist, deleteSong }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-  const[songs, setSongs] = useState([]);
+  const [songs, setSongs] = useState([]);
+  const [editPlaylistId, setEditPlaylistId] = useState(null);
+  const [editPlaylistName, setEditPlaylistName] = useState("");
 
+  // clicking on playlist name
   const handlePlaylistClick = async (playlistId) => {
     if (selectedPlaylist === playlistId) {
       setSelectedPlaylist(null);
@@ -18,31 +21,65 @@ function PlaylistList({ playlists, deletePlaylist, deleteSong }) {
       }
     }
   };
+   // edit button to update playlist name
+  const handleEditPlaylist = (playlistId, playlistName) => {
+    setEditPlaylistId(playlistId);
+    setEditPlaylistName(playlistName);
+  };
+
+  // save the playlist when name has been edited
+  const handleSavePlaylist = async (playlistId) => {
+    try {
+      const response = await api.put(`/playlists/${playlistId}`, { name: editPlaylistName });
+      const updatedPlaylist = response.data;
+      setEditPlaylistId(null);
   
+      // updating the playlist in state thats like local
+      setPlaylists((prevPlaylists) =>
+        prevPlaylists.map((playlist) =>
+          playlist._id === updatedPlaylist._id ? updatedPlaylist : playlist
+        )
+      );
+    } catch (error) {
+      console.error("failed to save playlist", error);
+    }
+  };
+  
+
+  const handleCancelEdit = () => {
+    setEditPlaylistId(null);
+    setEditPlaylistName("");
+  };
+
+  const handleEditInputChange = (event) => {
+    setEditPlaylistName(event.target.value);
+  };
 
   return (
     <div>
       <h2>Playlists</h2>
       {playlists.map((playlist) => (
         <div key={playlist._id}>
-          <h3 onClick={() => handlePlaylistClick(playlist._id)}>
-            {playlist.name}
-          </h3>
-          <button onClick={() => deletePlaylist(playlist._id)}>
-            Delete Playlist
-          </button>
+          {!editPlaylistId || editPlaylistId !== playlist._id ? (
+            <>
+              <h3 onClick={() => handlePlaylistClick(playlist._id)}>{playlist.name}</h3>
+              <button onClick={() => deletePlaylist(playlist._id)}>Delete Playlist</button>
+              <button onClick={() => handleEditPlaylist(playlist._id, playlist.name)}>Edit Playlist</button>
+            </>
+          ) : (
+            <>
+              <input type="text" value={editPlaylistName} onChange={handleEditInputChange}/>
+              <button onClick={() => handleSavePlaylist(playlist._id)}>Save</button>
+              <button onClick={handleCancelEdit}>Cancel</button>
+          </>
+          )}
+          {/* songs shown from the playlist*/}
           <h4>Songs:</h4>
           {selectedPlaylist === playlist._id && (
-            <ul>
-              {playlist.songs.map((song) => (
+            <ul>{playlist.songs.map((song) => (
                 <li key={song._id}>
                   {song.trackName} - {song.artistName}
-                  <button
-                    onClick={() => deleteSong(playlist._id, song._id)}
-                  >
-                    Delete Song
-                  </button>
-                </li>
+                  <button onClick={() => deleteSong(playlist._id, song._id)}>Delete Song</button></li>
               ))}
             </ul>
           )}

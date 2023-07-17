@@ -15,6 +15,8 @@ router.delete("/:playlistId", playlistController.deletePlaylist);
 router.delete("/:playlistId/songs/:songId", playlistController.deleteSongFromPlaylist);
 // GET request to get all the songs in a playlist based on playlistId - calls getPlaylistSongs() func
 router.get("/:playlistId/songs", playlistController.getPlaylistSongs);
+// PUT request to update playlist name
+router.put("/:playlistId", playlistController.updatePlaylistName);
 
 module.exports = router;
 

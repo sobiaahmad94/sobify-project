@@ -16,7 +16,7 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
 
     // handle adding to playlist  
     const handleAddToPlaylist = () => {
-        console.log("Adding to playlist")
+        console.log("adding to playlist")
         console.log(selectedPlaylist)
         if (selectedPlaylist && selectedPlaylist !== "") { // checks if the playlist isn't an empty string, means you can't add a song if there's nothing there like no playlists to select
             const playlist = playlists.find((p) => p.name === selectedPlaylist); // searches through playlists array to check if the one chosen is the same as one from the playlists array

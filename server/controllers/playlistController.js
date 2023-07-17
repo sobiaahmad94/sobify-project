@@ -38,7 +38,7 @@ const addSongToPlaylist = async (req, res) => {
       console.log(playlist)
   
       if (!playlist) {
-        return res.status(404).json({ error: "Playlist not found" });
+        return res.status(404).json({ error: "playlist wasn't found" });
       }
   
       const newSong = {
@@ -46,19 +46,17 @@ const addSongToPlaylist = async (req, res) => {
         artistName: artistName,
       };
   
-      playlist.songs.push(newSong); // Add the new song object to the songs array
+      // this is adding the new song to the songs array 
+      playlist.songs.push(newSong); 
       await playlist.save();
   
-      res.json(playlist); // Return the updated playlist object
+      // returning the updated playlist thing, collection
+      res.json(playlist); 
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Failed to add song to playlist" });
+      res.status(500).json({ error: "oh man, failed to add song to playlist" });
     }
   };
-  
-  
-
-
 
 // deleting a playlist
 const deletePlaylist = async (req, res) => {
@@ -99,8 +97,6 @@ const deleteSongFromPlaylist = async (req,res) => {
     }
 };
 
-
-
 // getting all of the songs from a playlist
 const getPlaylistSongs = async (req, res) => {
     const { playlistId } = req.params;
@@ -120,7 +116,28 @@ const getPlaylistSongs = async (req, res) => {
     }
 };
 
-module.exports = {
-    getPlaylists, createPlaylist, addSongToPlaylist, deletePlaylist, deleteSongFromPlaylist, getPlaylistSongs,
-}
-
+  // updating the playlist name by by the id
+  const updatePlaylistName = async (req, res) => {
+    const { playlistId } = req.params;
+    const { name } = req.body;
+  
+    try {
+      const playlist = await Playlist.findByIdAndUpdate(
+        playlistId,
+        { name },
+        { new: true }
+      );
+  
+      if (!playlist) {
+        return res.status(404).json({ error: "oh no, playlist not found" });
+      }
+  
+      res.json(playlist);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "failed to update playlist name" });
+    }
+  };
+  
+  module.exports = { getPlaylists, createPlaylist, addSongToPlaylist, deletePlaylist, deleteSongFromPlaylist, getPlaylistSongs, updatePlaylistName, 
+  };

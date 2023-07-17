@@ -48,16 +48,7 @@ function SkeletonContainer() {
             console.error("failed to properly search the songs", error);
         }
     };
-    // const handleSearch = async (keywords) => {
-    //     try {
-    //         const response = await api.get("/search", {params: {keywords}});
-    //         setSearchResults(response.data.results);
-    //     } catch (error) {
-    //         console.error("failed to properly fetch the songs", error)
-    //     }
-    // };
-
-
+   
     // function to add to playlist
     const addToPlaylist = async (playlistId, song) => {
         try {
@@ -80,32 +71,17 @@ function SkeletonContainer() {
         }
       };
 
-    
-    // function to create playlist
-    // const createPlaylist = async (name) => {
-    //     try {
-    //       const response = await api.post("/playlists", {name});
-    //       // checking if it's working
-    //       console.log("the playlist has been created, woooo", response.data);
-    //       fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
-    //     } catch (error) {
-    //       console.error("oh no, failed to create the playlist", error);
-    //     }
-    //   };
-    // function to create playlist
-const createPlaylist = async (name) => {
-    try {
-      const response = await api.post("/playlists", { name });
+    const createPlaylist = async (name) => {
+        try {
+        const response = await api.post("/playlists", { name });
       // checking if it's working
-      console.log("the playlist has been created, woooo", response.data);
-      fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
-    } catch (error) {
-      console.error("oh no, failed to create the playlist", error);
+            console.log("the playlist has been created, woooo", response.data);
+        fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
+        } catch (error) {
+            console.error("oh no, failed to create the playlist", error);
     }
   };
   
-
-
     // function to delete the playlist
     const deletePlaylist = async (playlistId) => {
         try {
@@ -144,6 +120,7 @@ const createPlaylist = async (name) => {
     
 
     return (
+        // changed the flow of my components a wee bit as I started building, I had to make some tweaks
         // order: SearchBar, Song, CreatePlaylistList, PlaylistList, FavouritePlaylist (will add the other components in my tree around these later)
         <div>
         {/* <NavBarContainer /> or HeaderNavContainer which will contain SearchBar and NavBar */}

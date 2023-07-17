@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter as Router} from "react-router-dom";
 
 import NavBar from "./NavBar";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
  
 
 function HeaderSearchNavContainer({onSearch}) {
