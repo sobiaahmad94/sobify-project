@@ -71,16 +71,16 @@ function SkeletonContainer() {
         }
       };
 
-    const createPlaylist = async (name) => {
-        try {
-        const response = await api.post("/playlists", { name });
-      // checking if it's working
-            console.log("the playlist has been created, woooo", response.data);
-        fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
-        } catch (error) {
-            console.error("oh no, failed to create the playlist", error);
-    }
-  };
+//     const createPlaylist = async (name) => {
+//         try {
+//         const response = await api.post("/playlists", { name });
+//       // checking if it's working
+//             console.log("the playlist has been created, woooo", response.data);
+//         fetchPlaylists(); // if I put this function here it'll hopefully refresh the playlists everytime you try to create a new playlist
+//         } catch (error) {
+//             console.error("oh no, failed to create the playlist", error);
+//     }
+//   };
   
     // function to delete the playlist
     const deletePlaylist = async (playlistId) => {
@@ -139,7 +139,7 @@ function SkeletonContainer() {
 
             <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites}/> */}
 
-            <SideBarContainer playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong} favourites={favourites} removeFromFavourites={removeFromFavourites} createPlaylist={createPlaylist}/>
+            <SideBarContainer playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong} favourites={favourites} removeFromFavourites={removeFromFavourites}/>
 
             {/* MusicPlayerContainer will go here which will contain the Spotify SDK */}    
         </div>

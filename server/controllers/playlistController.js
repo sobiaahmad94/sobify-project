@@ -32,7 +32,7 @@ const addSongToPlaylist = async (req, res) => {
     const { trackName, artistName } = req.body;
   
     try {
-        console.log("It worked")
+        console.log("it worked")
         console.log(playlistId)
       const playlist = await Playlist.findById(playlistId);
       console.log(playlist)

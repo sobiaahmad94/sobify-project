@@ -19,7 +19,7 @@ function CreatePlaylist({onCreate}) {
             setName("");
           }
         } catch (error) {
-          console.error("Failed to create playlist:", error);
+          console.error("failed to create playlist", error);
       }
     };
 
