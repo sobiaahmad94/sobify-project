@@ -76,13 +76,13 @@ function SkeletonContainer() {
 
     const addToFavourites = async (song) => {
         try {
-            const response = await api.post("/favourites/songs", song);
-            // checking if it's working
-            console.log("that class song has been added to favourites", response.data);
+          await api.post("/favourites/songs", song);
+          console.log("the song has been added to favourites");
+          fetchFavourites(); // fetching the updated list of favourites after adding a song on the thing
         } catch (error) {
-            console.error("failed to add the song to favourites", error);
+          console.error("failed to add the song to favourites", error);
         }
-    };
+      };
 
     
     // function to create playlist
