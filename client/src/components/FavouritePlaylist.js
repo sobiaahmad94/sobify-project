@@ -19,3 +19,4 @@ function FavouritePlaylist({favourites, removeFromFavourites}) {
 }
 
 export default FavouritePlaylist;
+

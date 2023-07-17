@@ -1,15 +1,24 @@
 import React, { useState } from "react";
+import api from "../services/api";
 
 function PlaylistList({ playlists, deletePlaylist, deleteSong }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+  const[songs, setSongs] = useState([]);
 
-  const handlePlaylistClick = (playlistId) => {
+  const handlePlaylistClick = async (playlistId) => {
     if (selectedPlaylist === playlistId) {
-      setSelectedPlaylist(null); // stops selecting it if it's already selected
+      setSelectedPlaylist(null);
     } else {
-      setSelectedPlaylist(playlistId); // selects the clicked playlist which is what I want
+      try {
+        const response = await api.get(`/playlists/${playlistId}/songs`);
+        setSelectedPlaylist(playlistId);
+        setSongs(response.data);
+      } catch (error) {
+        console.error("failed to fetch playlist songs", error);
+      }
     }
   };
+  
 
   return (
     <div>
@@ -44,4 +53,3 @@ function PlaylistList({ playlists, deletePlaylist, deleteSong }) {
 }
 
 export default PlaylistList;
-

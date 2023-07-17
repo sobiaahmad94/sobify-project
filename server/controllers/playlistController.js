@@ -28,31 +28,37 @@ const createPlaylist = async (req, res) => {
 
 // adding a song to a playlist
 const addSongToPlaylist = async (req, res) => {
-    const {playlistId} = req.params;
-    const {trackName, artistName} = req.body;
-
+    const { playlistId } = req.params;
+    const { trackName, artistName } = req.body;
+  
     try {
-        const playlist = await Playlist.findById(playlistId);
-
-        if (!playlist) {
-            return res.status(404).json({error: "playlist hasn't been found"})
-        }
-
-        // the newSong object has the song name and artist name
-        const newSong = {
-            trackName: trackName,
-            artistName: artistName,
-        };
-
-        playlist.songs.push(newSong);
-        await playlist.save();
-
-        res.json(newSong);
+        console.log("It worked")
+        console.log(playlistId)
+      const playlist = await Playlist.findById(playlistId);
+      console.log(playlist)
+  
+      if (!playlist) {
+        return res.status(404).json({ error: "Playlist not found" });
+      }
+  
+      const newSong = {
+        trackName: trackName,
+        artistName: artistName,
+      };
+  
+      playlist.songs.push(newSong); // Add the new song object to the songs array
+      await playlist.save();
+  
+      res.json(playlist); // Return the updated playlist object
     } catch (error) {
-        console.log(error)
-        res.status(500).json({error: "failed to add song to playlist"});
+      console.error(error);
+      res.status(500).json({ error: "Failed to add song to playlist" });
     }
-};
+  };
+  
+  
+
+
 
 // deleting a playlist
 const deletePlaylist = async (req, res) => {

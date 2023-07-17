@@ -14,10 +14,6 @@ function SkeletonContainer() {
     // favourites state
     const [favourites, setFavourites] = useState([]);
 
-    // selected playlist
-    const [selectedPlaylist, setSelectedPlaylist] = useState("");
-
-
     useEffect(() => {
         fetchPlaylists();
         fetchFavourites();
@@ -156,7 +152,7 @@ const createPlaylist = async (name) => {
 
             <HeaderSearchNavContainer onSearch={handleSearch}/>
 
-            <SearchResults searchResults={searchResults} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites} setSelectedPlaylist={setSelectedPlaylist}/>
+            <SearchResults searchResults={searchResults} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
 
             {/* <SiderBarContainer /> should contain CreatePlaylist, PlaylistList and FavouritePlaylist */}
 

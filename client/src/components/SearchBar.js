@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
         }
     }
   }));
-  
 
 
 function SearchBar({ onSearch}) {
@@ -77,4 +76,3 @@ function SearchBar({ onSearch}) {
 }
 
 export default SearchBar;
-

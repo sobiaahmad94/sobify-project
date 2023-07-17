@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+// import api from "../services/api";
 
-function Song({song, playlists, addToPlaylist, addToFavourites, selectedPlaylist, setSelectedPlaylist}) {
+function Song({song, playlists, addToPlaylist, addToFavourites}) {
 
     // state for setting playlist but might move this to SkeletonContainer but seemed relevant to me here
 
+    const [selectedPlaylist, setSelectedPlaylist] = useState("")
+
+    
     // handle playlist changingggg function
     const handlePlaylistChange = (event) => {
         setSelectedPlaylist(event.target.value);
@@ -12,6 +16,8 @@ function Song({song, playlists, addToPlaylist, addToFavourites, selectedPlaylist
 
     // handle adding to playlist  
     const handleAddToPlaylist = () => {
+        console.log("Adding to playlist")
+        console.log(selectedPlaylist)
         if (selectedPlaylist && selectedPlaylist !== "") { // checks if the playlist isn't an empty string, means you can't add a song if there's nothing there like no playlists to select
             const playlist = playlists.find((p) => p.name === selectedPlaylist); // searches through playlists array to check if the one chosen is the same as one from the playlists array
             // find() checks to get the first thing in the array that matches
