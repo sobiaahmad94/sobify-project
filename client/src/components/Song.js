@@ -13,7 +13,7 @@ const StyledSongBox = styled.div`
   background-color: rgba(0, 0, 0);
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Make sure each song box takes the full width */
+  width: 100%; 
 
   &:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -35,18 +35,18 @@ const StyledCoverImage = styled.img`
 `;
 
 const StyledMiniAudioPlayer = styled.audio`
-  width: 100%;
+  width: 300%;
   margin-top: 10px;
-  /* background-color: #1db954;
-  color: #fff;
+  background-color: #1db954;
+  color: rgba(255, 255, 255);
   border: none;
   padding: 8px 12px;
-  border-radius: 20px;
+  border-radius: 40px;
   cursor: pointer;
 
   &:hover {
     background-color: #1ed760;
-  } */
+  }
 `;
 
 const StyledAddToPlaylistButton = styled.button`
@@ -61,7 +61,7 @@ const StyledAddToPlaylistButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #1ed760;
+    background-color: rgba(29, 185, 84);
   }
 `;
 

@@ -7,22 +7,18 @@ import styled from "styled-components";
 
 const StyledSearchResultsContainer = styled.div`
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  width: 60%; /* Take 60% of the page width */
-  margin: 0 auto; /* Center the container itself */
+  justify-content: center; 
+  width: 60%; 
+  margin: 0 auto;
 
   @media (max-width: 768px) {
-    /* For smaller screens, take 100% of the page width */
     width: 100%;
   }
 `;
 
-
 const StyledSearchResultsBox = styled.div`
-  width: 100%; /* Take 100% width of the container */
+  width: 100%;
 `;
-
-
 
 function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourites }) {
   return (
