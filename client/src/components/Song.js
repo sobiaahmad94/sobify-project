@@ -25,6 +25,9 @@ const StyledSongInfo = styled.div`
   margin-left: 20px;
 `;
 
+const StyledTrackName = styled.p`
+  color: rgba(255, 255, 255);
+`;
 
 const StyledCoverImage = styled.img`
   width: 80px;
@@ -45,7 +48,7 @@ const StyledMiniAudioPlayer = styled.audio`
   cursor: pointer;
 
   &:hover {
-    background-color: #1ed760;
+    background-color: rgba(29, 200, 84);
   }
 `;
 
@@ -62,6 +65,26 @@ const StyledAddToPlaylistButton = styled.button`
 
   &:hover {
     background-color: rgba(29, 185, 84);
+  }
+`;
+
+const StyledSelect = styled.select`
+  background-color: rgba(29,190, 90);
+  color: rgba(255, 255, 255);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px; 
+  cursor: pointer;
+  appearance: none;
+  margin-top: 10px;
+  width: 90%; 
+  text-align-last: center; 
+  
+  margin-right: 20px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0);
+    color: rgba(29, 185, 84);
   }
 `;
 
@@ -108,26 +131,28 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
     // put the add to playlist and favourite this song buttons here with the funcs passed as props
 
     return (
+      <div>      
         <StyledSongBox>
         <StyledSongInfo>
-        <p>{song.trackName}</p>
+        <StyledTrackName className="track-name"><p>{song.trackName}</p></StyledTrackName>
         <p>{song.artistName}</p>
         <StyledCoverImage src={song.artworkUrl100} alt="album cover" controls/>
         <StyledMiniAudioPlayer src={song.previewUrl} alt="preview music mini player" controls/>
         </StyledSongInfo>
 
-        <select value={selectedPlaylist} onChange={handlePlaylistChange}>
+        <StyledSelect value={selectedPlaylist} onChange={handlePlaylistChange}>
         <option value="">Please select a playlist</option>
         {playlists.map((playlist) => (
           <option key={playlist._id} value={playlist.name}>
             {playlist.name}
           </option>
         ))}
-      </select>
+      </StyledSelect>
 
         <StyledAddToPlaylistButton onClick={handleAddToPlaylist}>Add To Playlist</StyledAddToPlaylistButton>
-        <button onClick={handleAddToFavourites}>Favourite This Song</button>
+        <StyledAddToPlaylistButton  onClick={handleAddToFavourites}>Favourite Song</StyledAddToPlaylistButton>
         </StyledSongBox>
+        </div>
 )
 };
 

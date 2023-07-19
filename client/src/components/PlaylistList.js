@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Comment from "./Comment";
 import api from "../services/api";
 
 function PlaylistList({ playlists, setPlaylists, deletePlaylist, deleteSong }) {
@@ -82,6 +83,7 @@ function PlaylistList({ playlists, setPlaylists, deletePlaylist, deleteSong }) {
                   <li key={song._id}>
                     {song.trackName} - {song.artistName}
                     <button onClick={() => deleteSong(playlist._id, song._id)}>Delete Song</button>
+                    <Comment songId={song._id}/>
                   </li>
                 ))}
               </ul>

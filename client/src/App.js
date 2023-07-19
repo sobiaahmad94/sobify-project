@@ -14,7 +14,7 @@ function App() {
       <Router>
         <SkeletonContainer />
         <Routes>
-          <Route exact path="/" element={<PlaylistList/>} />
+          <Route exact path="/all-playlists" element={<PlaylistList/>} />
           <Route exact path="/favourites" element={<FavouritePlaylist />} />
           <Route exact path="/createplaylist" element={<CreatePlaylist />} />
           <Route exact path="/timemachine" element={<TimeMachineRandomiser />} />

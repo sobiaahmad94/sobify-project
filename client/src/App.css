@@ -8,3 +8,45 @@ body {
     background-color: rgba(0, 0, 0);
     color: rgba(255,255, 255);
 } 
+
+button {
+margin-right: 10px;
+  background-color: rgba(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255,255);
+  cursor: pointer;
+
+}
+
+button:hover {
+    background-color: rgba(29, 185, 84);
+}
+
+h2{
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgba(29,185, 84);
+}
+
+/* p {
+    color: rgba(29,185, 84);
+
+} */
+
+h4 {
+    color: rgba(29,185, 84);
+
+}
+
+ul {
+    list-style: none;
+}
+
+.track-name {
+    font-weight: 900;
+
+}

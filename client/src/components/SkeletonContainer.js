@@ -1,10 +1,25 @@
 import React, {useState, useEffect} from "react";
 
-
 import HeaderSearchNavContainer from "./HeaderSearchNavContainer";
 import SearchResults from "./SearchResults";
 import SideBarContainer from "./SideBarContainer";
 import api from "../services/api";
+
+// styles
+import styled from "styled-components";
+const StyledPageContainer = styled.div`
+  display: flex;
+  justify-content: flex-end; /* Align the content to the right side */
+`;
+
+const StyledMainContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const StyledSideBarContainer = styled.div`
+  margin-left: 20px; /* Add some space between the SearchResults and SideBarContainer */
+`;
 
 function SkeletonContainer() {
     // searchResults state
@@ -129,8 +144,11 @@ function SkeletonContainer() {
 
             <HeaderSearchNavContainer onSearch={handleSearch}/>
 
+            <StyledPageContainer>
+            <StyledMainContainer>
+            <div style={{ flex: 3 }}>
             <SearchResults searchResults={searchResults} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
-
+            </div>
             {/* <SiderBarContainer /> should contain CreatePlaylist, PlaylistList and FavouritePlaylist */}
 
             {/* <CreatePlaylist onCreate={createPlaylist}/>
@@ -138,9 +156,11 @@ function SkeletonContainer() {
             <PlaylistList playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong}/>
 
             <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites}/> */}
-
+            <StyledSideBarContainer>
             <SideBarContainer playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong} favourites={favourites} removeFromFavourites={removeFromFavourites}/>
-
+            </StyledSideBarContainer>
+        </StyledMainContainer>
+        </StyledPageContainer>
             {/* MusicPlayerContainer will go here which will contain the Spotify SDK */}    
         </div>
     );

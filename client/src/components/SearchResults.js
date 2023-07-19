@@ -6,12 +6,18 @@ import Song from "./Song";
 import styled from "styled-components";
 
 const StyledSearchResultsContainer = styled.div`
-  display: flex;
-  justify-content: center; 
-  width: 60%; 
-  margin: 0 auto;
+display: flex;
+justify-content: flex-end;
+align-items: center; 
+width: 60%; 
+/* center */
+margin: 0 auto; 
+/* moves it to the right */
+margin-right: 5%; 
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  /* tried to make it responsive-ish */
+    margin-right: 0; 
     width: 100%;
   }
 `;
