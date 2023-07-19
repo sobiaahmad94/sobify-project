@@ -57,7 +57,7 @@ const StyledAddToPlaylistButton = styled.button`
   padding: 8px 12px;
   border-radius: 20px;
   cursor: pointer;
-  border: 1px solid #fff;
+  border: 1px solid rgba(255, 255,255);
   cursor: pointer;
 
   &:hover {
