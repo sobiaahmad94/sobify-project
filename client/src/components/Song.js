@@ -1,6 +1,70 @@
 import React, { useState } from "react";
 // import api from "../services/api";
 
+// styles
+import styled from "styled-components";
+
+const StyledSongBox = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: rgba(0, 0, 0);
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Make sure each song box takes the full width */
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const StyledSongInfo = styled.div`
+  flex: 1;
+  margin-left: 20px;
+`;
+
+
+const StyledCoverImage = styled.img`
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 20px;
+`;
+
+const StyledMiniAudioPlayer = styled.audio`
+  width: 100%;
+  margin-top: 10px;
+  /* background-color: #1db954;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1ed760;
+  } */
+`;
+
+const StyledAddToPlaylistButton = styled.button`
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1ed760;
+  }
+`;
+
 function Song({song, playlists, addToPlaylist, addToFavourites}) {
 
     // state for setting playlist but might move this to SkeletonContainer but seemed relevant to me here
@@ -44,11 +108,13 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
     // put the add to playlist and favourite this song buttons here with the funcs passed as props
 
     return (
-        <div>
+        <StyledSongBox>
+        <StyledSongInfo>
         <p>{song.trackName}</p>
         <p>{song.artistName}</p>
-        <img src={song.artworkUrl100} alt="album cover" controls/>
-        <audio src={song.previewUrl} alt="preview music mini player" controls/>
+        <StyledCoverImage src={song.artworkUrl100} alt="album cover" controls/>
+        <StyledMiniAudioPlayer src={song.previewUrl} alt="preview music mini player" controls/>
+        </StyledSongInfo>
 
         <select value={selectedPlaylist} onChange={handlePlaylistChange}>
         <option value="">Please select a playlist</option>
@@ -59,9 +125,9 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
         ))}
       </select>
 
-        <button onClick={handleAddToPlaylist}>Add To Playlist</button>
+        <StyledAddToPlaylistButton onClick={handleAddToPlaylist}>Add To Playlist</StyledAddToPlaylistButton>
         <button onClick={handleAddToFavourites}>Favourite This Song</button>
-        </div>
+        </StyledSongBox>
 )
 };
 

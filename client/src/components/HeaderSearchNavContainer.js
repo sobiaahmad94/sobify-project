@@ -8,10 +8,8 @@ import NavBar from "./NavBar";
 function HeaderSearchNavContainer({onSearch}) {
     return (
         <div>
-        <Router>
             <NavBar onSearch={onSearch}/>
             {/* <SearchBar onSearch={onSearch}/> I moved this inside the NavBar component*/}
-        </Router>
             
         </div>
     );

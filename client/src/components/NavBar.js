@@ -44,27 +44,29 @@ function NavBar({onSearch}) {
   return (
     <ThemeProvider theme={theme}>
     <AppBar position="static">
-      <Toolbar style={{display: "flex", justifyContent: "space-between"}}>
+      <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+      
         <Link to="/" style={{ textDecoration: "none" }}>
-            <img src={sobifyNavLogoImg} alt="Sobify nav logo" style={{height: 40, marginRight: 10}}/>
+          <img src={sobifyNavLogoImg} alt="Sobify nav logo" style={{ height: 40, marginRight: 10 }} />
         </Link>
         <SearchBar onSearch={onSearch}/>
-        <div style={{display: "flex", alignItems: "center"}}>
-
-        {/* register for a new account icon */}
-        <StyledIconButton color="inherit" component={NavLink} exact to="/login" activeClassName="active"
->          
-          <PersonAddIcon/>
-        </StyledIconButton>
-        {/* this is the person icon for account */}
-        <StyledIconButton color="inherit" component={NavLink} exact to="/account" activeClassName="active">
-              <AccountCircleIcon />
-        </StyledIconButton>
+        <div style={{ display: "flex", alignItems: "center" }}>
+        
+          <NavLink to="/timemachine" style={{ textDecoration: "none", marginRight: 10 }}>
+            <Button color="inherit">Time Machine Randomizer</Button>
+          </NavLink>
+          <StyledIconButton color="inherit" component={NavLink} exact to="/login" activeClassName="active">
+            <PersonAddIcon />
+          </StyledIconButton>
+          <StyledIconButton color="inherit" component={NavLink} exact to="/account" activeClassName="active">
+            <AccountCircleIcon />
+          </StyledIconButton>
         </div>
       </Toolbar>
     </AppBar>
-    </ThemeProvider>
-  );
+  </ThemeProvider>
+);
+
 }
 
 export default NavBar;

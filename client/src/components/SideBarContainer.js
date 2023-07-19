@@ -2,6 +2,7 @@ import React from "react";
 import CreatePlaylist from "./CreatePlaylist";
 import PlaylistList from "./PlaylistList";
 import FavouritePlaylist from "./FavouritePlaylist";
+import TimeMachineRandomiser from "./TimeMachineRandomiser";
 
 function SideBarContainer({playlists, deletePlaylist, deleteSong, favourites, removeFromFavourites, createPlaylist}) {
   return (
@@ -9,6 +10,7 @@ function SideBarContainer({playlists, deletePlaylist, deleteSong, favourites, re
       <CreatePlaylist onCreate={createPlaylist}/>
       <PlaylistList playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong}/>
       <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites}/>
+      <TimeMachineRandomiser/>
     </div>
   );
 }
