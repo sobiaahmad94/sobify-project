@@ -6,9 +6,9 @@ import FavouritePlaylist from "./FavouritePlaylist";
 function SideBarContainer({playlists, deletePlaylist, deleteSong, favourites, removeFromFavourites, createPlaylist}) {
   return (
     <div>
-      <CreatePlaylist onCreate={createPlaylist} />
-      <PlaylistList playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong} />
-      <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites} />
+      <CreatePlaylist onCreate={createPlaylist}/>
+      <PlaylistList playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong}/>
+      <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites}/>
     </div>
   );
 }

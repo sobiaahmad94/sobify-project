@@ -36,12 +36,16 @@ mongoose.connect(mongodbUri, {
 const playlistRoutes = require("./routes/playlistRoutes");
 const favouriteRoutes = require("./routes/favouriteRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const commentRoutes = require("./routes/commentRoutes");
+
 
 // do app.use for them after
 
 app.use("/api/playlists", playlistRoutes);
 app.use("/api/favourites", favouriteRoutes);
 app.use("/api/search", searchRoutes);
+app.use("/api/comments", commentRoutes);
+
 
 
 
