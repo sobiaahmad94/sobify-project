@@ -26,10 +26,10 @@ import Comment from "./Comment";
 function SideBarContainer({playlists, deletePlaylist, deleteSong, favourites, removeFromFavourites, createPlaylist}) {
   return (
     <div>
+      <TimeMachineRandomiser/>
       <CreatePlaylist onCreate={createPlaylist}/>
       <PlaylistList playlists={playlists} deletePlaylist={deletePlaylist} deleteSong={deleteSong}/>
       <FavouritePlaylist favourites={favourites} removeFromFavourites={removeFromFavourites}/>
-      <TimeMachineRandomiser/>
     </div>
     
   );

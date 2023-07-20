@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       "& .MuiIconButton-root": {
         color: "rgba(29, 185, 84)",
         "&:hover": {
-            color: "rgba(29, 185, 84xs)",
+            color: "rgba(29, 185, 84)",
         }
       },
     },

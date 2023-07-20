@@ -7,7 +7,7 @@ import styled from "styled-components";
 const StyledSongBox = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
+  border: 1px solid grey;
   padding: 10px;
   margin: 10px 0;
   background-color: rgba(0, 0, 0);
@@ -40,7 +40,7 @@ const StyledCoverImage = styled.img`
 const StyledMiniAudioPlayer = styled.audio`
   width: 300%;
   margin-top: 10px;
-  background-color: #1db954;
+  background-color: rgba(78,134,81);
   color: rgba(255, 255, 255);
   border: none;
   padding: 8px 12px;

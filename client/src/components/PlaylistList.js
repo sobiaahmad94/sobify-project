@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import Comment from "./Comment";
 import api from "../services/api";
 
+// styles
+import styled from "styled-components";
+
+
+
 function PlaylistList({ playlists, setPlaylists, deletePlaylist, deleteSong }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
   const [songs, setSongs] = useState([]);
