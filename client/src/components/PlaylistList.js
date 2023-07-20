@@ -5,6 +5,16 @@ import api from "../services/api";
 // styles
 import styled from "styled-components";
 
+const StyledDeleteButton = styled.button`
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+
+  :hover {
+    background-color: rgb(243, 61, 61);
+  }
+`;
+
 
 
 function PlaylistList({ playlists, setPlaylists, deletePlaylist, deleteSong }) {
@@ -87,7 +97,7 @@ function PlaylistList({ playlists, setPlaylists, deletePlaylist, deleteSong }) {
               <ul>{playlist.songs.map((song) => (
                   <li key={song._id}>
                     {song.trackName} - {song.artistName}
-                    <button onClick={() => deleteSong(playlist._id, song._id)}>Delete Song</button>
+                    <StyledDeleteButton className="delete-button" onClick={() => deleteSong(playlist._id, song._id)}>Delete Song</StyledDeleteButton>
                     <Comment songId={song._id}/>
                   </li>
                 ))}

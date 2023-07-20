@@ -46,3 +46,8 @@ ul {
     list-style: none;
 }
 
+.delete-button:hover {
+    background-color: rgb(243, 61, 61);
+
+}
+

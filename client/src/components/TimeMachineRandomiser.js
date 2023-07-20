@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import songsByYearData from "./seeds.js"; // this has all the yearly top hits json stuff
 
+//styles
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+`;
+
 const TimeMachineRandomiser = () => {
   const [year, setYear] = useState("");
   const [song, setSong] = useState("");
@@ -26,7 +35,7 @@ setYear(event.target.value);
     <div>
       <h2>Song Time Machine</h2>
       <label>Please enter a year: <input type="number" value={year} onChange={handleYearChange} />
-      </label><button onClick={handleRandomise}>Find</button>
+      </label><StyledButton onClick={handleRandomise}>Find</StyledButton>
 
       {song && ( <p>Selected Song: "{song}" by {artist } which was out in {year}</p>)}
       

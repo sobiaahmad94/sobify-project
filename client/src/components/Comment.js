@@ -20,14 +20,19 @@ const StyledTextArea = styled.textarea`
   box-sizing: border-box;
   border: 4px solid rgba(29,185, 84);
   border-radius: 4px;
-  background-color: #rgba(0, 0, 0);
+  background-color: rgba(0, 0, 0);
   resize: none;
-  color: rgba(0, 0, 0);
+  color: rgba(29,185, 84);
+  
 `;
 
 const StyledButton = styled.button`
   margin: 10px;
   padding: 10px;
+  align-items: center;
+`;
+
+const StyledUlComment = styled.ul`
   align-items: center;
 `;
 
@@ -65,13 +70,13 @@ function Comment({ songId }) {
 {/* comment box is a textarea not input as it makes more sensee I think*/}
   return (
     <StyledCommentContainer>
-      <StyledTextArea rows="3" cols="20" value={newComment} onChange={(event) => setNewComment(event.target.value)}></StyledTextArea>
+      <StyledTextArea placeholder="Please leave a comment :)" rows="3" cols="20" value={newComment} onChange={(event) => setNewComment(event.target.value)}></StyledTextArea>
       <StyledButton onClick={addComment}>Add Comment</StyledButton>
       {/* map is used to "map" over app the comments, shows each one in the li */}
-      <ul>{comments.map((comment) => (
+      <StyledUlComment>{comments.map((comment) => (
     <li key={comment._id}>{comment.text}</li>
         ))}
-      </ul>
+      </StyledUlComment>
     </StyledCommentContainer>
   );
 }
