@@ -40,7 +40,7 @@ const StyledCoverImage = styled.img`
 const StyledMiniAudioPlayer = styled.audio`
   width: 300%;
   margin-top: 10px;
-  background-color: rgba(78,134,81);
+  background-color: rgba(29, 200, 84);
   color: rgba(255, 255, 255);
   border: none;
   padding: 8px 12px;
@@ -48,7 +48,8 @@ const StyledMiniAudioPlayer = styled.audio`
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(29, 200, 84);
+    background-color: rgba(78,134,81);
+
   }
 `;
 

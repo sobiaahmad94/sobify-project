@@ -9,7 +9,7 @@ import api from "../services/api";
 import styled from "styled-components";
 const StyledPageContainer = styled.div`
   display: flex;
-  justify-content: flex-end; /* Align the content to the right side */
+  justify-content: flex-end; 
 `;
 
 const StyledMainContainer = styled.div`
@@ -18,7 +18,7 @@ const StyledMainContainer = styled.div`
 `;
 
 const StyledSideBarContainer = styled.div`
-  margin-left: 20px; /* Add some space between the SearchResults and SideBarContainer */
+  margin-left: 20px; 
 `;
 
 function SkeletonContainer() {
@@ -28,6 +28,7 @@ function SkeletonContainer() {
     const [playlists, setPlaylists] = useState([]);
     // favourites state
     const [favourites, setFavourites] = useState([]);
+
 
     useEffect(() => {
         fetchPlaylists();

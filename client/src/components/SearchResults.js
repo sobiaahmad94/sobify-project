@@ -26,18 +26,43 @@ const StyledSearchResultsBox = styled.div`
   width: 100%;
 `;
 
-function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourites }) {
+// function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourites, loading }) {
+//   return (
+//     <StyledSearchResultsContainer>
+//       <StyledSearchResultsBox>
+//         <h1>Search Results</h1>
+//         {loading ? (
+//           <span>Loading results...</span>
+//         ) : (
+//           searchResults.map((song, index) => (
+//             <div key={`${song.songId}-${index}`}>
+//               <Song song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
+//               {/* <Comment songId={song.songId}/>  */}
+//             </div>
+//           ))
+//         )}
+//       </StyledSearchResultsBox>
+//     </StyledSearchResultsContainer>
+//   );
+// }
+
+// export default SearchResults;
+
+function SearchResults({ searchResults, playlists, addToPlaylist, addToFavourites, loading }) {
   return (
     <StyledSearchResultsContainer>
-    <StyledSearchResultsBox>
-      <h1>Search Results</h1>
-      {searchResults.map((song, index) => (
-        <div key={`${song.songId}-${index}`}>
-          <Song song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
-          {/* <Comment songId={song.songId}/>  */}
-        </div>
-      ))}
-    </StyledSearchResultsBox>
+      <StyledSearchResultsBox>
+        <h1>Search Results</h1>
+        {!loading && searchResults.length === 0 && <span>No results found.</span>}
+        {!loading && searchResults.length > 0 && (
+          searchResults.map((song, index) => (
+            <div key={`${song.songId}-${index}`}>
+              <Song song={song} playlists={playlists} addToPlaylist={addToPlaylist} addToFavourites={addToFavourites}/>
+              {/* <Comment songId={song.songId}/>  */}
+            </div>
+          ))
+        )}
+      </StyledSearchResultsBox>
     </StyledSearchResultsContainer>
   );
 }

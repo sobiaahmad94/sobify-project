@@ -1,6 +1,10 @@
 import {React, useState} from "react";
+
+// material UI styles
 import {TextField, IconButton, makeStyles} from "@material-ui/core";
 import {Search as SearchIcon} from "@material-ui/icons";
+
+
 
 // styling
 const useStyles = makeStyles((theme) => ({
@@ -43,36 +47,36 @@ function SearchBar({ onSearch}) {
     const classes = useStyles();
     // keywords state
     const [keywords, setKeywords] = useState("");
+    // state for loading
+    const [loading, setLoading] = useState(false);
 
-    // handling input change like if something is typed in the input box
-    const handleInputChange = (event) => {
-        setKeywords(event.target.value);
-    };
+// handling input change like if something is typed in the input box
+  const handleInputChange = (event) => {
+    setKeywords(event.target.value);
+  };
 
 
-    // handling search result
-    // const handleSearch = (event) => {
-    //     event.preventDefault() // added this line because as soon as I typed a character it was registering each character 
-    //     onSearch(keywords);
-    // };
-    const handleSearch = (event) => {
-        event.preventDefault();
-        onSearch(keywords);
-    };
+// handling search result
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    await onSearch(keywords);
+    // resetting the loading after the results have loaded
+    setLoading(false); 
+    // the input is an empty string again
+    setKeywords(""); 
+  };
 
-    
-    return (
-        // form needs to go here, input and search button
+  return (
     <form onSubmit={handleSearch} style={{ display: "flex", alignItems: "center"}}>
-        <TextField variant="outlined" placeholder="Search" value={keywords} onChange={handleInputChange} className={classes.searchInput}/>
-    
-        <IconButton type="submit" aria-label="search" className={classes.searchButton}>
-
+      <TextField variant="outlined" placeholder="Search" value={keywords} onChange={handleInputChange} className={classes.searchInput} disabled={loading}/> 
+      <IconButton type="submit" aria-label="search" className={classes.searchButton}>
         <SearchIcon className={classes.searchIcon} style={{fontSize: "40"}}/>
-
-        </IconButton>
+      </IconButton>
+      {loading && <span>Loading some tunes for you...</span>}
     </form>
-);
+  );
 }
 
 export default SearchBar;
+
