@@ -1,82 +1,74 @@
-import {React, useState} from "react";
-
-// material UI styles
-import {TextField, IconButton, makeStyles} from "@material-ui/core";
-import {Search as SearchIcon} from "@material-ui/icons";
-
-
+import React, { useState } from "react";
 
 // styling
-const useStyles = makeStyles((theme) => ({
-    searchInput: {
-      display: "flex",
-      marginRight: 10,
-      "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-          borderColor: "rgba(20, 20, 20)",
-        },
-        "& input": {
-            color: "rgba(29,185, 84)",
-            "&:focus": {
-              color: "rgba(29, 185, 84)",
-            },
-            "&::placeholder": {
-                color: "rgba(169,169,169)",
-            }
-          },
-        },
-      },
-    searchButton: {
-      "& .MuiIconButton-root": {
-        color: "rgba(29, 185, 84)",
-        "&:hover": {
-            color: "rgba(29, 185, 84)",
-        }
-      },
-    },
-    searchIcon: {
-        color: "rgba(255, 255, 255)",
-        "&:hover": {
-            color: "rgba(29, 185, 84)",
-        }
-    }
-  }));
+import styled from "styled-components";
 
+// react icons
+import { PiMagnifyingGlassBold } from "react-icons/pi"; 
 
-function SearchBar({ onSearch}) {
-    const classes = useStyles();
-    // keywords state
-    const [keywords, setKeywords] = useState("");
-    // state for loading
-    const [loading, setLoading] = useState(false);
+const StyledLoadingMessage = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+`;
 
-// handling input change like if something is typed in the input box
+const SearchBar = ({ onSearch }) => {
+  // keywords state
+  const [keywords, setKeywords] = useState("");
+  // state for loading
+  const [loading, setLoading] = useState(false);
+
+  // handling input change like if something is typed into the field
   const handleInputChange = (event) => {
     setKeywords(event.target.value);
   };
-
 
 // handling search result
   const handleSearch = async (event) => {
     event.preventDefault();
     setLoading(true);
-    await onSearch(keywords);
     // resetting the loading after the results have loaded
-    setLoading(false); 
-    // the input is an empty string again
-    setKeywords(""); 
+    await onSearch(keywords);
+    setLoading(false);
+    // input would be set to an empty string again
+    setKeywords("");
   };
 
   return (
-    <form onSubmit={handleSearch} style={{ display: "flex", alignItems: "center"}}>
-      <TextField variant="outlined" placeholder="Search" value={keywords} onChange={handleInputChange} className={classes.searchInput} disabled={loading}/> 
-      <IconButton type="submit" aria-label="search" className={classes.searchButton}>
-        <SearchIcon className={classes.searchIcon} style={{fontSize: "40"}}/>
-      </IconButton>
-      {loading && <span>Loading some tunes for you...</span>}
+    <form onSubmit={handleSearch} style={{ display: "flex", alignItems: "center" }}>
+      <input
+        type="text"
+        placeholder="Search"
+        value={keywords}
+        onChange={handleInputChange}
+        style={{
+          border: "1px solid rgba(20, 20, 20)",
+          color: "rgba(29, 185, 84)",
+          "&:focus": {
+            color: "rgba(29, 185, 84)",
+          },
+          "&::placeholder": {
+            color: "rgba(169, 169, 169)",
+          },
+          marginRight: "10px",
+          padding: "10px",
+          outline: "none",
+        }}
+        disabled={loading}
+      />
+      <button type="submit" aria-label="search" style={{ cursor: "pointer" }}>
+        <PiMagnifyingGlassBold style={{ fontSize: "18", color: "rgba(255, 255, 255)" }} />
+      </button>
+      <span style={{ alignSelf: "center" }}>
+        {loading && (
+          <StyledLoadingMessage>
+            Loading some tunes for you...
+          </StyledLoadingMessage>
+        )}
+      </span>
     </form>
   );
-}
+};
 
 export default SearchBar;
-
