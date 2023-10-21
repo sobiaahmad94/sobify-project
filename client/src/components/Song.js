@@ -4,6 +4,10 @@ import React, { useState } from "react";
 // styles
 import styled from "styled-components";
 
+// react icons
+import { FaHeart, FaHeartBroken } from "react-icons/fa";
+
+
 const StyledSongBox = styled.div`
   display: flex;
   align-items: center;
@@ -94,6 +98,9 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
     // state for setting playlist but might move this to SkeletonContainer but seemed relevant to me here
 
     const [selectedPlaylist, setSelectedPlaylist] = useState("")
+
+    // state for favourite toggler
+    const [isFavorite, setIsFavorite] = useState(false);
 
     
     // handle playlist changingggg function
