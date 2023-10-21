@@ -10,6 +10,11 @@ const StyledButton = styled.button`
   align-items: center;
 `;
 
+const StyledInput = styled.input`
+  width: 185px;
+  margin-left: 40px;
+`;
+
 const TimeMachineRandomiser = () => {
   const [year, setYear] = useState("");
   const [song, setSong] = useState("");
@@ -34,7 +39,7 @@ setYear(event.target.value);
   return (
     <div>
       <h2>Song Time Machine</h2>
-      <label>Please enter a year: <input type="number" value={year} onChange={handleYearChange} />
+      <label>Enter a year: <StyledInput type="number" value={year} onChange={handleYearChange} />
       </label><StyledButton onClick={handleRandomise}>Find</StyledButton>
 
       {song && ( <p>Selected Song: "{song}" by {artist } which was out in {year}</p>)}
