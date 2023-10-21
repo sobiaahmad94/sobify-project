@@ -99,9 +99,6 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
 
     const [selectedPlaylist, setSelectedPlaylist] = useState("")
 
-    // state for favourite toggler
-    const [isFavorite, setIsFavorite] = useState(false);
-
     
     // handle playlist changingggg function
     const handlePlaylistChange = (event) => {
@@ -158,7 +155,7 @@ function Song({song, playlists, addToPlaylist, addToFavourites}) {
       </StyledSelect>
 
         <StyledAddToPlaylistButton onClick={handleAddToPlaylist}>Add To Playlist</StyledAddToPlaylistButton>
-        <StyledAddToPlaylistButton  onClick={handleAddToFavourites}>Favourite Song</StyledAddToPlaylistButton>
+        <StyledAddToPlaylistButton  onClick={handleAddToFavourites}>{<FaHeart /> }</StyledAddToPlaylistButton>
         </StyledSongBox>
         </div>
 )
